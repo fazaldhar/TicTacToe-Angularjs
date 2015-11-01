@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<script type="text/javascript" src="scripts/lib/angular.js"></script>
+		<script type="text/javascript" src="scripts/main.js"></script>		
+	</head>
+	<body ng-app="tictactoe" ng-controller="ctrlTictactoe">
+		<div class="wrapper">
+			<header>
+				<h1>Tic Tac Toe</h1>
+				<div class="players">
+					<span class='fLeft player1' ng-class="playerColor ? 'colorChange' : ''">Player 1's turn</span>
+					<span class='fRight player2' ng-class="!playerColor ? 'colorChange' : ''">Player 2's turn</span>
+					<div class="clear"></div>
+				</div>
+			</header>
+			
+			<section>
+				<div class="playArea">
+					<ul>
+						<li ng-repeat="(key, value) in boxes" class="{{value.className}} {{value.markedImage}}" ng-click="playAreaClick(value)"></li> 
+					</ul>
+				</div>
+				<button class="resetBtn fRight" ng-click="popupOkButn()">Reset</button>
+				<div class="clear"></div>
+			</section>
+		</div>
+		<section class="dull-black-screen" ng-show="winnerPopupShowHide"></section>
+		<section class="winnerPopup" ng-show="winnerPopupShowHide">
+			<span class="winnerAnnounce" ng-bind="finalDec"></span>
+			<button class="okButn" ng-click="popupOkButn()">OK</button>
+		</section>
+	</body>
+</html>
