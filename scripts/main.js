@@ -58,6 +58,7 @@ tictactoe.controller('ctrlTictactoe', ['$scope','$timeout',
         $scope.playerColor = true;
 
         $scope.playAreaClick = function(thisBox) {
+            console.log('thisBox');
             if(!thisBox.marked){
                 if(clickNum % 2 == 0) {
                     $scope.winner = "Player 1";
